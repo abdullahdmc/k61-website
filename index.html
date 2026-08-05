@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K61 · Dhaka Medical College Batch Directory</title>
+<meta name="description" content="A directory for the K61 batch of Dhaka Medical College — reconnect, browse by specialty, and see where everyone is now.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="seal" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="30" fill="#0F3D3E"/>
+        <circle cx="32" cy="32" r="30" fill="none" stroke="#B08D57" stroke-width="1.4"/>
+        <circle cx="32" cy="32" r="25" fill="none" stroke="#B08D57" stroke-width="0.7" stroke-dasharray="1 3"/>
+        <text x="32" y="30" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-weight="700" font-size="15" fill="#FAF6EF">K61</text>
+        <text x="32" y="43" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#E7D9BE" letter-spacing="1">DMC</text>
+      </svg>
+      <span class="brand-text">
+        <span class="k">K61</span><br>
+        <span class="sub">Dhaka Medical College</span>
+      </span>
+    </a>
+
+    <nav class="main-nav">
+      <a class="nav-link is-active" href="index.html">Directory</a>
+      <button class="nav-link" id="specialtyTab" type="button">Browse by Specialty</button>
+    </nav>
+
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search name, roll, specialty…" aria-label="Search classmates">
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Batch of 2009 · Roll 1&ndash;N</div>
+    <h1>Nineteen years of white coats, night shifts, and where they led us.</h1>
+    <p class="lede">A running record of the K61 batch — everyone's current work, specialty, and the best way to reach them. Kept up to date by the batch, for the batch.</p>
+
+    <div class="filmstrip">
+      <div class="filmstrip-track" id="filmstripTrack"></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <svg class="pulse-divider" viewBox="0 0 600 28" preserveAspectRatio="none"><path d="M0 14 H210 L228 4 L246 24 L264 14 H600" /></svg>
+          <h2>The Batch</h2>
+        </div>
+        <span class="count" id="directoryCount"></span>
+      </div>
+
+      <div class="filter-banner" id="filterBanner">
+        <span id="filterBannerLabel"></span>
+        <button type="button" id="clearFilter">Clear filter</button>
+      </div>
+
+      <div class="directory-grid" id="directoryGrid"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Maintained by the K61 batch, Dhaka Medical College. Spotted an outdated detail? Ask the admin to update <code>data.js</code>.</p>
+    <span class="foot-mark">K61 · EST. 2003 · DMC</span>
+  </div>
+</footer>
+
+<!-- Specialty browser overlay -->
+<div class="overlay" id="specialtyOverlay">
+  <div class="panel">
+    <div class="panel-head">
+      <h3>Browse by Specialty</h3>
+      <button class="panel-close" id="specialtyClose" aria-label="Close">&times;</button>
+    </div>
+    <ul class="specialty-list" id="specialtyList"></ul>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
