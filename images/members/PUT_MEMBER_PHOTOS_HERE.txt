@@ -1,0 +1,11 @@
+Put each classmate's photo in this folder (images/members/).
+
+Then in js/data.js, set their "photo" field to match, e.g.:
+  photo: "images/members/07.jpg"
+
+Recommended: square photos, at least 400x400px, named by roll
+number (01.jpg, 02.jpg...) so they're easy to match to data.js.
+
+If a photo is missing or the file name doesn't match, the site
+automatically shows a placeholder avatar with that person's
+initials instead — nothing breaks.

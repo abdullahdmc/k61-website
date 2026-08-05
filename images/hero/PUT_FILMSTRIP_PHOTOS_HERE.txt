@@ -1,0 +1,11 @@
+Put your batch's "past to present" photos in this folder
+(images/hero/) — old group photos, ward-day snapshots, past
+reunions, right up to your most recent get-together.
+
+Then list them in order in js/main.js, inside the "heroPhotos"
+array near the top of the file. Each entry needs a file path
+and a short caption (e.g. the year).
+
+Widescreen-ish photos (roughly 3:2) look best in the filmstrip.
+If a listed photo file is missing, that frame just shows the
+caption on a plain teal background — nothing breaks.
