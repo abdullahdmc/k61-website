@@ -17,19 +17,26 @@
                 grid and to build the profile page link).
                 Must be unique.
    name         Full name, e.g. "Dr. Farhana Ahmed"
-   photo        Path to their photo file. Put the actual photo
-                file inside images/members/ and reference it
-                here, e.g. "images/members/07.jpg".
+   photo        Path to their headshot file. Put the actual
+                photo file inside images/members/ and reference
+                it here, e.g. "images/members/107.jpg".
                 If you leave this blank (""), a placeholder
                 avatar with their initials is shown instead —
                 so the site works even before you have photos.
+   visitingCard Path to a scan/photo of their visiting card, e.g.
+                "images/members/107-card.jpg". Put the file in
+                images/members/ too. Leave blank ("") to show an
+                empty "not added yet" placeholder on their
+                profile page — nothing breaks either way.
    designation  Their current title, e.g. "Associate Professor
                 of Cardiology" or "Consultant Physician"
    specialty    Their field, e.g. "Cardiology", "Public Health",
                 "General Surgery", "Medicine Researcher". This
                 is what powers the "Browse by Specialty" tab —
                 just keep the spelling consistent for people in
-                the same field.
+                the same field. Leave "" if not confirmed yet —
+                they'll simply be left out of the specialty
+                browser until you fill it in.
    workplace    Current hospital / institution / organisation
    phone        Phone number as they'd like it shown (optional,
                 leave as "" to hide)
@@ -38,88 +45,360 @@
    facebook     Full Facebook URL (optional, leave as "" to hide)
    location     City / country (optional, shown on profile page)
 
-   TIP: Delete the 6 sample entries below once you start adding
-   your real batchmates — they're only there so the site has
-   something to display when you first open it.
+   A few entries below have "(unconfirmed)" in the designation —
+   these came from uncertain notes and are worth double-checking
+   with that classmate before you publish.
    ========================================================= */
 
 const members = [
   {
-    roll: 1,
-    name: "Dr. Nusrat Jahan",
+    roll: 101,
+    name: "Dr. Md. Abdullah Sayeed Khan",
     photo: "",
-    designation: "Associate Professor, Cardiology",
-    specialty: "Cardiology",
-    workplace: "National Institute of Cardiovascular Diseases (NICVD), Dhaka",
-    phone: "+880 1XXX-XXXXXX",
-    email: "nusrat.k61@example.com",
-    linkedin: "https://linkedin.com/in/",
-    facebook: "https://facebook.com/",
-    location: "Dhaka, Bangladesh"
-  },
-  {
-    roll: 2,
-    name: "Dr. Shariful Islam",
-    photo: "",
-    designation: "Consultant, General Surgery",
-    specialty: "General Surgery",
-    workplace: "Square Hospitals Ltd.",
-    phone: "+880 1XXX-XXXXXX",
-    email: "shariful.k61@example.com",
-    linkedin: "",
-    facebook: "https://facebook.com/",
-    location: "Dhaka, Bangladesh"
-  },
-  {
-    roll: 3,
-    name: "Dr. Farhana Rahman",
-    photo: "",
-    designation: "Senior Research Fellow",
-    specialty: "Public Health & Research",
-    workplace: "icddr,b",
+    visitingCard: "",
+    designation: "Epidemiologist",
+    specialty: "Epidemiology",
+    workplace: "",
     phone: "",
-    email: "farhana.k61@example.com",
-    linkedin: "https://linkedin.com/in/",
-    facebook: "",
-    location: "Dhaka, Bangladesh"
-  },
-  {
-    roll: 4,
-    name: "Dr. Tanvir Ahmed",
-    photo: "",
-    designation: "Assistant Professor, Neurology",
-    specialty: "Neurology",
-    workplace: "Bangabandhu Sheikh Mujib Medical University (BSMMU)",
-    phone: "+880 1XXX-XXXXXX",
-    email: "tanvir.k61@example.com",
+    email: "",
     linkedin: "",
     facebook: "",
-    location: "Dhaka, Bangladesh"
+    location: ""
   },
   {
-    roll: 5,
-    name: "Dr. Sadia Chowdhury",
+    roll: 102,
+    name: "Dr. Debalina Das",
     photo: "",
-    designation: "Consultant, Obstetrics & Gynaecology",
+    visitingCard: "",
+    designation: "Gynecologist",
     specialty: "Gynaecology & Obstetrics",
-    workplace: "Chittagong Medical College Hospital",
-    phone: "+880 1XXX-XXXXXX",
-    email: "sadia.k61@example.com",
-    linkedin: "https://linkedin.com/in/",
-    facebook: "https://facebook.com/",
-    location: "Chattogram, Bangladesh"
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
   },
   {
-    roll: 6,
-    name: "Dr. Imran Kabir",
+    roll: 103,
+    name: "Dr. Hasan Mahbub",
     photo: "",
-    designation: "GP & Clinical Lead",
-    specialty: "Family Medicine",
-    workplace: "NHS Trust",
+    visitingCard: "",
+    designation: "Neurosurgeon",
+    specialty: "Neurosurgery",
+    workplace: "",
     phone: "",
-    email: "imran.k61@example.com",
-    linkedin: "https://linkedin.com/in/",
+    email: "",
+    linkedin: "",
     facebook: "",
-    location: "London, United Kingdom"
+    location: ""
+  },
+  {
+    roll: 104,
+    name: "Dr. Kamal Pervez",
+    photo: "",
+    visitingCard: "",
+    designation: "Cardiologist",
+    specialty: "Cardiology",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 105,
+    name: "Dr. SM Sadlee",
+    photo: "",
+    visitingCard: "",
+    designation: "Medicine Specialist",
+    specialty: "Internal Medicine",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 106,
+    name: "Dr. Sarmin Sattar",
+    photo: "",
+    visitingCard: "",
+    designation: "Microbiologist",
+    specialty: "Microbiology",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 107,
+    name: "Dr. Arif Sobuj",
+    photo: "",
+    visitingCard: "",
+    designation: "Retired Government Officer",
+    specialty: "",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 108,
+    name: "Dr. Shahida Siddika",
+    photo: "",
+    visitingCard: "",
+    designation: "Surgeon, Australia (unconfirmed)",
+    specialty: "",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: "Australia"
+  },
+  {
+    roll: 109,
+    name: "Dr. Dipon Dey",
+    photo: "",
+    visitingCard: "",
+    designation: "Aspiring Medicine Specialist, USA",
+    specialty: "Internal Medicine",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: "United States"
+  },
+  {
+    roll: 110,
+    name: "Dr. Shahriar Amin",
+    photo: "",
+    visitingCard: "",
+    designation: "Anesthesiologist",
+    specialty: "Anesthesiology",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 111,
+    name: "Dr. Christina Rozario",
+    photo: "",
+    visitingCard: "",
+    designation: "General Physician, UK",
+    specialty: "Family Medicine / General Practice",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: "United Kingdom"
+  },
+  {
+    roll: 112,
+    name: "Dr. Tanvir Joglul Khan",
+    photo: "",
+    visitingCard: "",
+    designation: "Orthopaedic Surgeon",
+    specialty: "Orthopaedic Surgery",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 113,
+    name: "Dr. Fatema Joan",
+    photo: "",
+    visitingCard: "",
+    designation: "Gynecologist",
+    specialty: "Gynaecology & Obstetrics",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 114,
+    name: "Dr. Saimun Nessa",
+    photo: "",
+    visitingCard: "",
+    designation: "General Physician & UHFPO",
+    specialty: "Family Medicine / General Practice",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 115,
+    name: "Dr. Mumtahina Mahmuda Ananna",
+    photo: "",
+    visitingCard: "",
+    designation: "Pediatrician",
+    specialty: "Paediatrics",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 116,
+    name: "Dr. Sazzad Hossain Bhuiyan",
+    photo: "",
+    visitingCard: "",
+    designation: "",
+    specialty: "",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 117,
+    name: "Dr. Md Shahriar Islam",
+    photo: "",
+    visitingCard: "",
+    designation: "ENT Specialist",
+    specialty: "ENT (Otolaryngology)",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 118,
+    name: "Dr. Susmita Paul",
+    photo: "",
+    visitingCard: "",
+    designation: "Endocrinologist",
+    specialty: "Endocrinology",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 119,
+    name: "Dr. Farhana Nishat",
+    photo: "",
+    visitingCard: "",
+    designation: "Dermatologist & Medicine Specialist, UK",
+    specialty: "Dermatology",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: "United Kingdom"
+  },
+  {
+    roll: 120,
+    name: "Dr. Fatama Akter Chowdhury",
+    photo: "",
+    visitingCard: "",
+    designation: "General Surgeon",
+    specialty: "General Surgery",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 121,
+    name: "Dr. Nayim Anwar",
+    photo: "",
+    visitingCard: "",
+    designation: "Neurologist",
+    specialty: "Neurology",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 122,
+    name: "Dr. Taskia Binte Zaman",
+    photo: "",
+    visitingCard: "",
+    designation: "Laboratory Medicine Specialist (unconfirmed)",
+    specialty: "",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 123,
+    name: "Dr. Md Adnanul Alom",
+    photo: "",
+    visitingCard: "",
+    designation: "Medicine Specialist",
+    specialty: "Internal Medicine",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 124,
+    name: "Dr. Anamika Agarwala",
+    photo: "",
+    visitingCard: "",
+    designation: "",
+    specialty: "",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
+  },
+  {
+    roll: 125,
+    name: "Dr. Taufique Ahmed",
+    photo: "",
+    visitingCard: "",
+    designation: "Ex-UHFPO; Aspiring Virologist (unconfirmed)",
+    specialty: "",
+    workplace: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    facebook: "",
+    location: ""
   }
 ];

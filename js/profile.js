@@ -12,6 +12,7 @@ function iconSVG(name) {
     email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>',
     pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
     building: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20"/><path d="M9 22v-4h6v4M9 6h1M14 6h1M9 10h1M14 10h1M9 14h1M14 14h1"/></svg>',
+    card: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15h4M6 11.5h.01"/><path d="M14 9.5h4M14 12.5h4M14 15h2.5"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>',
     facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3.5h-3V7.8c0-1 .3-1.7 1.7-1.7H16.5V3.1C16 3 15 3 13.9 3 11.5 3 10 4.5 10 7.4V10H7.5v3.5H10V21h3.5z"/></svg>'
   };
@@ -56,12 +57,20 @@ function renderProfile() {
   if (member.facebook) socialButtons.push(`
     <a class="social-btn" href="${member.facebook}" target="_blank" rel="noopener">${iconSVG("facebook")} Facebook</a>`);
 
+  const visitingCardBlock = member.visitingCard
+    ? `<div class="visiting-card"><img id="visitingCardImg" alt="Visiting card — ${member.name}"></div>`
+    : `<div class="visiting-card is-empty">${iconSVG("card")}<span>Visiting card<br>not added yet</span></div>`;
+
   root.innerHTML = `
     <a class="back-link" href="index.html">&larr; Back to the directory</a>
     <div class="profile-card">
       <div>
         <div class="profile-photo"><img id="profileImg" alt="${member.name}"></div>
         <span class="roll-badge">Roll No. ${member.roll} · K61</span>
+        <div class="visiting-card-wrap">
+          <div class="visiting-card-label">Visiting Card</div>
+          ${visitingCardBlock}
+        </div>
       </div>
       <div>
         <h1 class="profile-name">${member.name}</h1>
@@ -75,6 +84,20 @@ function renderProfile() {
 
   const img = document.getElementById("profileImg");
   if (img) withPhotoFallback(img, member);
+
+  // Visiting card: if the file is missing/broken, fall back to the
+  // empty placeholder box rather than a broken image icon.
+  const cardImg = document.getElementById("visitingCardImg");
+  if (cardImg && member.visitingCard) {
+    cardImg.src = member.visitingCard;
+    cardImg.onerror = () => {
+      const wrap = cardImg.closest(".visiting-card");
+      if (wrap) {
+        wrap.classList.add("is-empty");
+        wrap.innerHTML = `${iconSVG("card")}<span>Visiting card<br>not added yet</span>`;
+      }
+    };
+  }
 }
 
 document.addEventListener("DOMContentLoaded", renderProfile);
